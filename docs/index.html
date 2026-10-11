@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>FLR Sistemas — apps</title>
+<meta name="description" content="Apps by FLR Sistemas. Preço Certo works out the real cost and the selling price of every recipe for bakers and confectioners.">
+<style>
+  /* Tema escuro único: não há versão clara de propósito. Mesma paleta escura
+     da política de privacidade, para as duas páginas parecerem do mesmo lugar. */
+  :root {
+    color-scheme: dark;
+    --bg: #241C1A;
+    --surface: #2E2422;
+    --text: #F2E9E5;
+    --muted: #BFAEA7;
+    --border: #453634;
+    --accent: #7FB79B;
+    --accent-bg: #2A3833;
+    --brand: #B85463;
+    --brand-text: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 16px 72px;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  header.site { padding: 48px 0 8px; }
+  .company { font-size: 1.9rem; line-height: 1.2; margin: 0; }
+  .tagline { color: var(--muted); margin: 6px 0 0; }
+
+  /* ===== Bloco de app =====
+     Cada app é um <article class="app">. Para acrescentar outro, copie o
+     bloco do Preço Certo inteiro, troque o id, os textos e os links. */
+  article.app {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .app h2 { font-size: 1.6rem; line-height: 1.2; margin: 0 0 6px; }
+  .app .lead { font-size: 1.1rem; color: var(--muted); margin: 0 0 20px; }
+  .app h3.section { font-size: 1.05rem; margin: 30px 0 12px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .button {
+    display: inline-block;
+    background: var(--brand);
+    color: var(--brand-text);
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .button:hover, .button:focus-visible { filter: brightness(1.12); }
+  .link { color: var(--muted); font-size: .95rem; }
+  .note { color: var(--muted); font-size: .9rem; margin: 10px 0 0; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .card h4 { margin: 0 0 6px; font-size: 1.02rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .pro {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    vertical-align: middle;
+  }
+  /* Galeria: faixa que rola na horizontal e "encaixa" cada print. Cada imagem
+     leva width e height no HTML para a página não pular quando carregar. */
+  .shots {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 2px 14px;
+    margin: 0 -2px;
+  }
+  .shots figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
+  .shots img {
+    display: block;
+    width: 200px;
+    height: auto;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+  }
+  .shots figcaption { color: var(--muted); font-size: .85rem; margin-top: 8px; max-width: 200px; }
+  /* PDFs são folhas A4: mostram-se mais largas que os prints e, no orçamento,
+     só o topo, porque o resto da folha é branco. */
+  .shots.docs img { width: 260px; }
+  .shots.docs figcaption { max-width: 260px; }
+  .doc-quote .moldura img { border: 0; border-radius: 0; }
+  .doc-quote .moldura { width: 260px; aspect-ratio: 597 / 360; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); }
+  .summary {
+    background: var(--accent-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+  }
+  .summary p { margin: 0; }
+  a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a.button { text-decoration: none; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .88rem;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="site">
+    <h1 class="company">FLR Sistemas</h1>
+    <p class="tagline">Apps for Android.</p>
+  </header>
+
+  <!-- ============================================================
+       APP: Preço Certo
+       ============================================================ -->
+  <article class="app" id="precocerto">
+    <h2>Preço Certo</h2>
+    <p class="lead">Know the real cost of every recipe, and the price that pays you for your work.</p>
+
+    <div class="actions">
+      <a class="button" href="https://play.google.com/store/apps/details?id=br.com.flrsistemas.precocerto.app">Get it on Google Play</a>
+      <a class="link" href="privacy.html">Privacy policy</a>
+    </div>
+    <p class="note">Android app for bakers and confectioners.</p>
+
+    <h3 class="section">What it does</h3>
+    <p>
+      You list the ingredients and the time a recipe takes. Preço Certo adds up
+      the cost of the ingredients, the gas and electricity, and your own labour, and
+      shows how much each unit really costs. You pick the profit margin you want and
+      the app gives you the selling price.
+    </p>
+
+    <div class="grid" style="margin-top:18px">
+      <div class="card">
+        <h4>Real cost per recipe</h4>
+        <p>Ingredients, indirect costs and your working time, all in one number per unit.</p>
+      </div>
+      <div class="card">
+        <h4>One selling price</h4>
+        <p>Choose your margin and get a single selling price, rounded up to the next 10 cents. The profit shown is calculated on that exact price.</p>
+      </div>
+      <div class="card">
+        <h4>Recipe parts</h4>
+        <p>Sort the ingredients into dough, filling, seasoning, decoration and packaging.</p>
+      </div>
+      <div class="card">
+        <h4>Backup file</h4>
+        <p>Save your recipes in an encrypted file, share it, and restore it on a new phone.</p>
+      </div>
+    </div>
+
+    <h3 class="section">Screenshots</h3>
+    <div class="shots">
+      <figure>
+        <img src="img/home.webp" width="944" height="2000" loading="lazy"
+             alt="Home screen with the number of recipes and ingredients, your hourly rate and a three-step guide.">
+        <figcaption>Home</figcaption>
+      </figure>
+      <figure>
+        <img src="img/pantry.webp" width="944" height="2000" loading="lazy"
+             alt="My Pantry list with the package price and the cost per gram or per unit of each ingredient.">
+        <figcaption>Your pantry</figcaption>
+      </figure>
+      <figure>
+        <img src="img/recipes.png" width="383" height="812" loading="lazy"
+             alt="My Recipes list showing the price, the unit cost and the unit profit of each recipe.">
+        <figcaption>Your recipes</figcaption>
+      </figure>
+      <figure>
+        <img src="img/recipe-price.png" width="378" height="816" loading="lazy"
+             alt="Recipe screen with the batch summary, the total cost, the profit margin slider and the selling price with the profit per unit, above the Save recipe, Create a quote and Kitchen sheet buttons.">
+        <figcaption>Cost, price and profit</figcaption>
+      </figure>
+      <figure>
+        <img src="img/my-business.webp" width="944" height="2000" loading="lazy"
+             alt="My Business screen where you enter the income you want, your hours, and the default overheads and profit margin.">
+        <figcaption>What your hour is worth</figcaption>
+      </figure>
+      <figure>
+        <img src="img/quote-screen.png" width="380" height="810" loading="lazy"
+             alt="Quote screen with who it is for, quantity, unit price and total.">
+        <figcaption>Create a quote</figcaption>
+      </figure>
+      <figure>
+        <img src="img/pro.webp" width="944" height="2000" loading="lazy"
+             alt="Preço Certo Pro screen listing what you get with Pro: no limits, quote and kitchen sheet as PDF, pay once, and works without internet.">
+        <figcaption>What you get with Pro</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="section">The two PDFs</h3>
+    <div class="shots docs">
+      <figure class="doc doc-quote">
+        <div class="moldura">
+          <img src="img/quote-pdf.png" width="597" height="844" loading="lazy"
+               alt="A quote as PDF with the item, quantity, unit price and total. It shows no costs and no margin.">
+        </div>
+        <figcaption>Quote for the buyer</figcaption>
+      </figure>
+      <figure class="doc">
+        <img src="img/prep-sheet.png" width="595" height="845" loading="lazy"
+             alt="A kitchen sheet as PDF with the ingredients grouped by recipe part and the method. It shows no prices.">
+        <figcaption>Kitchen sheet</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="section">Pro features</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Quote as PDF <span class="pro">PRO</span></h4>
+        <p>Turn a recipe into a quote for the person who is buying. It shows the price and never your costs or your margin.</p>
+      </div>
+      <div class="card">
+        <h4>Kitchen sheet as PDF <span class="pro">PRO</span></h4>
+        <p>All ingredients and the method on one sheet for the kitchen, with no prices on it.</p>
+      </div>
+      <div class="card">
+        <h4>No limits at all <span class="pro">PRO</span></h4>
+        <p>Recipes, items and categories as you please. The free plan stops at 3, 15 and 2.</p>
+      </div>
+      <div class="card">
+        <h4>Pay once, yours forever <span class="pro">PRO</span></h4>
+        <p>No monthly fee, no renewal, no surprise charge on your card.</p>
+      </div>
+      <div class="card">
+        <h4>Works without internet</h4>
+        <p>Your sheets stay on your phone. Nothing is sent anywhere.</p>
+      </div>
+    </div>
+
+    <h3 class="section">Your data stays with you</h3>
+    <div class="summary">
+      <p><strong>Preço Certo collects no personal data.</strong></p>
+      <p style="margin-top:8px">No account, no login, no server. Your recipes and prices are stored only on your phone and the app works without internet.</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>
+      FLR Sistemas<br>
+      Contact: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a>
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>
