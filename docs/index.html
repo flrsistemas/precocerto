@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>Preço Certo — FLR Sistemas</title>
-<meta name="description" content="Preço Certo works out the real cost and the selling price of every recipe for bakers and confectioners.">
+<meta name="description" content="O Preço Certo calcula o custo real e o preço de venda de cada receita de confeitaria, e gera orçamento e ficha de cozinha em PDF.">
+<link rel="canonical" href="https://flrsistemas.com.br/precocerto/">
+<link rel="alternate" hreflang="pt" href="https://flrsistemas.com.br/precocerto/">
+<link rel="alternate" hreflang="en" href="https://flrsistemas.com.br/precocerto/en/">
+<link rel="alternate" hreflang="es" href="https://flrsistemas.com.br/precocerto/es/">
+<link rel="alternate" hreflang="x-default" href="https://flrsistemas.com.br/precocerto/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FLR Sistemas">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Preço Certo — FLR Sistemas">
+<meta property="og:description" content="O Preço Certo calcula o custo real e o preço de venda de cada receita de confeitaria, e gera orçamento e ficha de cozinha em PDF.">
+<meta property="og:url" content="https://flrsistemas.com.br/precocerto/">
 <style>
   /* Tema escuro único: não há versão clara de propósito. Mesma paleta escura
      da política de privacidade, para as duas páginas parecerem do mesmo lugar. */
@@ -30,7 +41,7 @@
     font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   main { max-width: 760px; margin: 0 auto; }
-  header.site { padding: 32px 0 0; }
+  header.site { padding: 24px 0 0; }
   .back { color: var(--muted); font-size: .95rem; text-decoration: none; }
   .back:hover, .back:focus-visible { color: var(--text); text-decoration: underline; }
 
@@ -151,184 +162,204 @@
     color: var(--muted);
     font-size: .88rem;
   }
+
+  /* Seletor de idioma: PT | EN | ES, discreto, no canto do topo. */
+  .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .langs { display: flex; gap: 4px; margin-left: auto; font-size: .85rem; }
+  .langs a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+  .langs a:hover, .langs a:focus-visible { color: var(--text); }
+  .langs a[aria-current="page"] { color: var(--text); border-color: var(--muted); font-weight: 600; }
+  nav.langs-solo { display: flex; justify-content: flex-end; padding-top: 24px; }
+
 </style>
+<script>
+  /* Escolha automatica de idioma, so na primeira visita e so na pagina padrao (pt). */
+  (function () {
+    try {
+      var salvo = localStorage.getItem('lang');
+      var l = salvo || String((navigator.languages && navigator.languages[0]) || navigator.language || 'pt').slice(0, 2).toLowerCase();
+      if (l === 'pt') return;
+      location.replace('/precocerto/' + (l === 'es' ? 'es' : 'en') + '/');
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
 <main>
 
-  <header class="site">
-    <!-- "../" e nao um endereco absoluto: funciona em flrsistemas.github.io e
-         em flrsistemas.com.br, e nao quebra se o dominio mudar. -->
-    <a class="back" href="../">&larr; FLR Sistemas</a>
+  <header class="site topbar">
+    <a class="back" href="/">← FLR Sistemas</a>
+    <nav class="langs" aria-label="Language"><a href="/precocerto/" lang="pt" hreflang="pt" aria-current="page" onclick="try{localStorage.setItem('lang','pt')}catch(e){}">PT</a><a href="/precocerto/en/" lang="en" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">EN</a><a href="/precocerto/es/" lang="es" hreflang="es" onclick="try{localStorage.setItem('lang','es')}catch(e){}">ES</a></nav>
   </header>
 
-  <!-- ============================================================
-       APP: Preço Certo
-       ============================================================ -->
   <article class="app" id="precocerto">
     <h2>Preço Certo</h2>
-    <p class="lead">Know the real cost of every recipe, and the price that pays you for your work.</p>
+    <p class="lead">Saiba o custo real de cada receita e o preço que paga o seu trabalho.</p>
 
     <div class="actions">
-      <a class="button" href="https://play.google.com/store/apps/details?id=br.com.flrsistemas.precocerto.app">Get it on Google Play</a>
-      <a class="link" href="#how">How it works</a>
-      <a class="link" href="privacy.html">Privacy policy</a>
+      <a class="button" href="https://play.google.com/store/apps/details?id=br.com.flrsistemas.precocerto.app">Baixar no Google Play</a>
+      <a class="link" href="#how">Como funciona</a>
+      <a class="link" href="privacy.html">Política de privacidade (em inglês)</a>
     </div>
-    <p class="note">Android app for bakers and confectioners.</p>
+    <p class="note">App Android para quem trabalha com confeitaria.</p>
 
-    <h3 class="section">What it does</h3>
+    <h3 class="section">O que ele faz</h3>
     <p>
-      You list the ingredients and the time a recipe takes. Preço Certo adds up
-      the cost of the ingredients, the gas and electricity, and your own labour, and
-      shows how much each unit really costs. You pick the profit margin you want and
-      the app gives you the selling price.
+      Você lista os ingredientes e o tempo de cada receita. O Preço Certo soma o custo dos ingredientes, do gás e da luz e do seu próprio trabalho, e mostra quanto custa de verdade cada unidade. Você escolhe a margem de lucro que quer e o app dá o preço de venda.
     </p>
 
     <div class="grid" style="margin-top:18px">
       <div class="card">
-        <h4>Real cost per recipe</h4>
-        <p>Ingredients, indirect costs and your working time, all in one number per unit.</p>
+        <h4>Custo real por receita</h4>
+        <p>Ingredientes, custos indiretos e o seu tempo de trabalho, em um só número por unidade.</p>
       </div>
       <div class="card">
-        <h4>One selling price</h4>
-        <p>Choose your margin and get a single selling price, rounded up to the next 10 cents. The profit shown is calculated on that exact price.</p>
+        <h4>Um só preço de venda</h4>
+        <p>Escolha a margem e receba um único preço de venda, arredondado para cima de 10 em 10 centavos. O lucro mostrado é calculado sobre esse preço exato.</p>
       </div>
       <div class="card">
-        <h4>Recipe parts</h4>
-        <p>Sort the ingredients into dough, filling, seasoning, decoration and packaging.</p>
+        <h4>Partes da receita</h4>
+        <p>Separe os ingredientes em massa, recheio, tempero, decoração e embalagem.</p>
       </div>
       <div class="card">
-        <h4>Backup file</h4>
-        <p>Save your recipes in an encrypted file, share it, and restore it on a new phone.</p>
+        <h4>Arquivo de backup</h4>
+        <p>Guarde suas receitas em um arquivo criptografado, compartilhe e restaure em um celular novo.</p>
       </div>
     </div>
 
-    <h3 class="section" id="how">How it works</h3>
+    <h3 class="section" id="how">Como funciona</h3>
     <ol class="steps">
       <li>
-        <h4>Set what your hour is worth</h4>
-        <p>Open the menu and choose <strong>My Business</strong>. Fill in the income you want each month, your hours per day and your days per month. The app shows your hourly rate and cost per minute.</p>
-        <p>Here you also set the defaults for new recipes (overheads for gas, electricity and wear, and your profit margin). Tap <strong>Save settings</strong>. Your business name goes on the quotes you send.</p>
+        <h4>Defina quanto vale a sua hora</h4>
+        <p>Abra o menu e escolha <strong>Meu Negócio</strong>. Preencha o salário mensal desejado, as horas por dia e os dias por mês. O app mostra o valor da sua hora e o custo por minuto.</p>
+        <p>Ali você também define os padrões das receitas novas (custos indiretos de gás, luz e desgaste, e a margem de lucro). Toque em <strong>Salvar configurações</strong>. O nome da sua confeitaria aparece nos orçamentos que você envia.</p>
       </li>
       <li>
-        <h4>Add your pantry items</h4>
-        <p>Go to <strong>Pantry</strong> and tap <strong>New item</strong>. Enter the name, the price you paid for the whole package, and the package amount and unit. The app works out the cost per gram, millilitre or unit on its own.</p>
-        <p>Packaging counts too: boxes and liners by the piece, ribbon and film by the metre.</p>
+        <h4>Cadastre seus insumos</h4>
+        <p>Abra <strong>Despensa de Insumos</strong> e toque em <strong>Novo insumo</strong>. Informe o nome, o preço que você pagou pela embalagem inteira, a quantidade da embalagem e a unidade. O app calcula sozinho o custo por grama, mililitro ou unidade.</p>
+        <p>Embalagens também entram: caixas e forminhas por unidade, fitas e filmes por metro.</p>
       </li>
       <li>
-        <h4>Build a recipe</h4>
-        <p>Tap <strong>New recipe</strong>. Give it a name, add the pantry items with the amount you use, and sort them into parts such as dough and filling. Write the method, the hands-on time, and how much the recipe yields.</p>
+        <h4>Monte uma receita</h4>
+        <p>Toque em <strong>Nova receita</strong>. Dê um nome, adicione os insumos da despensa com a quantidade usada e separe-os em partes, como massa e recheio. Escreva o modo de preparo, o tempo ativo e o rendimento.</p>
       </li>
       <li>
-        <h4>Read the price</h4>
-        <p>At the bottom of the recipe you see the total cost and the cost per unit. Move the <strong>profit margin</strong> slider and the app gives you the selling price, rounded up to the next 10 cents, with the profit per unit. If rounding raises the margin, a note tells you the margin it ended up with. Tap <strong>Save recipe</strong>.</p>
+        <h4>Veja o preço</h4>
+        <p>No fim da receita aparecem o custo total e o custo por unidade. Mexa no controle da <strong>margem de lucro desejada</strong> e o app mostra o preço de venda, arredondado para cima de 10 em 10 centavos, com o lucro por unidade. Se o arredondamento aumentar a margem, um aviso diz qual margem ficou. Toque em <strong>Salvar receita</strong>.</p>
       </li>
       <li>
-        <h4>Send a quote or a kitchen sheet <span class="pro">PRO</span></h4>
-        <p>Open a recipe and tap <strong>Create a quote</strong>. Choose to charge by <em>Unit</em> or by <em>Whole recipe</em>, set the quantity and who it is for, and tap <strong>Create PDF</strong>. The quote shows the price and never your costs or your margin.</p>
-        <p><strong>Kitchen sheet</strong> makes a PDF with every ingredient by part and the method, with no prices.</p>
+        <h4>Envie um orçamento ou uma ficha para a cozinha <span class="pro">PRO</span></h4>
+        <p>Abra uma receita e toque em <strong>Gerar orçamento</strong>. Escolha cobrar por <em>Unidade</em> ou por <em>Receita inteira</em>, informe a quantidade e para quem é, e toque em <strong>Gerar PDF</strong>. O orçamento mostra o preço e nunca os seus custos nem a sua margem.</p>
+        <p><strong>Ficha para a cozinha</strong> gera um PDF com todos os ingredientes por parte e o modo de preparo, sem preços.</p>
       </li>
       <li>
-        <h4>Back up your recipes</h4>
-        <p>In <strong>My Business</strong>, the backup card saves everything in one encrypted file that you can share. Restore it from the same card when you change phones.</p>
+        <h4>Faça backup das suas receitas</h4>
+        <p>Em <strong>Meu Negócio</strong>, o cartão de backup (<strong>Fazer backup</strong>) guarda tudo em um arquivo criptografado que você pode compartilhar. Restaure pelo mesmo cartão (<strong>Restaurar backup</strong>) quando trocar de celular.</p>
       </li>
     </ol>
     <ul class="tips">
-      <li>Add your pantry items first, then build the recipe: the recipe needs them to work out the cost.</li>
-      <li>Update an item's price when you buy it again, and the recipes that use it update on their own.</li>
-      <li>The app uses your phone's language and region, so money and numbers look the way you are used to.</li>
+      <li>Cadastre os insumos primeiro e depois monte a receita: ela precisa deles para calcular o custo.</li>
+      <li>Atualize o preço de um insumo quando comprar de novo, e as receitas que o usam se atualizam sozinhas.</li>
+      <li>O app usa o idioma e a região do seu celular, então dinheiro e números aparecem do jeito que você já conhece.</li>
     </ul>
 
-    <h3 class="section">Screenshots</h3>
+    <h3 class="section">Telas</h3>
     <div class="shots">
       <figure>
         <img src="img/home.webp" width="944" height="2000" loading="lazy"
-             alt="Home screen with the number of recipes and ingredients, your hourly rate and a three-step guide.">
-        <figcaption>Home</figcaption>
+             alt="Tela inicial com o número de receitas e de ingredientes, o valor da sua hora e um guia em três passos.">
+        <figcaption>Início</figcaption>
       </figure>
       <figure>
         <img src="img/pantry.webp" width="944" height="2000" loading="lazy"
-             alt="My Pantry list with the package price and the cost per gram or per unit of each ingredient.">
-        <figcaption>Your pantry</figcaption>
+             alt="Lista da despensa com o preço da embalagem e o custo por grama ou por unidade de cada ingrediente.">
+        <figcaption>Sua despensa</figcaption>
       </figure>
       <figure>
         <img src="img/recipes.png" width="383" height="812" loading="lazy"
-             alt="My Recipes list showing the price, the unit cost and the unit profit of each recipe.">
-        <figcaption>Your recipes</figcaption>
+             alt="Lista de receitas com o preço, o custo por unidade e o lucro por unidade de cada uma.">
+        <figcaption>Suas receitas</figcaption>
       </figure>
       <figure>
         <img src="img/recipe-price.png" width="378" height="816" loading="lazy"
-             alt="Recipe screen with the batch summary, the total cost, the profit margin slider and the selling price with the profit per unit, above the Save recipe, Create a quote and Kitchen sheet buttons.">
-        <figcaption>Cost, price and profit</figcaption>
+             alt="Tela da receita com o resumo do lote, o custo total, o controle da margem de lucro e o preço de venda com o lucro por unidade, acima dos botões de salvar, gerar orçamento e ficha para a cozinha.">
+        <figcaption>Custo, preço e lucro</figcaption>
       </figure>
       <figure>
         <img src="img/my-business.webp" width="944" height="2000" loading="lazy"
-             alt="My Business screen where you enter the income you want, your hours, and the default overheads and profit margin.">
-        <figcaption>What your hour is worth</figcaption>
+             alt="Tela Meu Negócio, onde você informa o salário que quer, suas horas e os padrões de custos indiretos e margem de lucro.">
+        <figcaption>Quanto vale a sua hora</figcaption>
       </figure>
       <figure>
         <img src="img/quote-screen.png" width="380" height="810" loading="lazy"
-             alt="Quote screen with who it is for, quantity, unit price and total.">
-        <figcaption>Create a quote</figcaption>
+             alt="Tela do orçamento com para quem é, quantidade, preço unitário e total.">
+        <figcaption>Gerar um orçamento</figcaption>
       </figure>
       <figure>
         <img src="img/pro.webp" width="944" height="2000" loading="lazy"
-             alt="Preço Certo Pro screen listing what you get with Pro: no limits, quote and kitchen sheet as PDF, pay once, and works without internet.">
-        <figcaption>What you get with Pro</figcaption>
+             alt="Tela do Preço Certo Pro com o que você leva: sem limites, orçamento e ficha de cozinha em PDF, pagamento único e funcionamento sem internet.">
+        <figcaption>O que você leva com o Pro</figcaption>
       </figure>
     </div>
+    <p class="note">As capturas de tela do app estão em inglês.</p>
 
-    <h3 class="section">The two PDFs</h3>
+    <h3 class="section">Os dois PDFs</h3>
     <div class="shots docs">
       <figure class="doc doc-quote">
         <div class="moldura">
           <img src="img/quote-pdf.png" width="597" height="844" loading="lazy"
-               alt="A quote as PDF with the item, quantity, unit price and total. It shows no costs and no margin.">
+               alt="Um orçamento em PDF com item, quantidade, preço unitário e total. Não mostra custos nem margem.">
         </div>
-        <figcaption>Quote for the buyer</figcaption>
+        <figcaption>Orçamento para quem compra</figcaption>
       </figure>
       <figure class="doc">
         <img src="img/prep-sheet.png" width="595" height="845" loading="lazy"
-             alt="A kitchen sheet as PDF with the ingredients grouped by recipe part and the method. It shows no prices.">
-        <figcaption>Kitchen sheet</figcaption>
+             alt="Uma ficha para a cozinha em PDF com os ingredientes agrupados por parte da receita e o modo de preparo. Não mostra preços.">
+        <figcaption>Ficha para a cozinha</figcaption>
       </figure>
     </div>
 
-    <h3 class="section">Pro features</h3>
+    <h3 class="section">Recursos Pro</h3>
     <div class="grid">
       <div class="card">
-        <h4>Quote as PDF <span class="pro">PRO</span></h4>
-        <p>Turn a recipe into a quote for the person who is buying. It shows the price and never your costs or your margin.</p>
+        <h4>Orçamento em PDF <span class="pro">PRO</span></h4>
+        <p>Transforme uma receita em um orçamento para quem vai comprar. Ele mostra o preço e nunca os seus custos nem a sua margem.</p>
       </div>
       <div class="card">
-        <h4>Kitchen sheet as PDF <span class="pro">PRO</span></h4>
-        <p>All ingredients and the method on one sheet for the kitchen, with no prices on it.</p>
+        <h4>Ficha para a cozinha em PDF <span class="pro">PRO</span></h4>
+        <p>Todos os ingredientes e o modo de preparo em uma folha para a cozinha, sem preços.</p>
       </div>
       <div class="card">
-        <h4>No limits at all <span class="pro">PRO</span></h4>
-        <p>Recipes, items and categories as you please. The free plan stops at 3, 15 and 2.</p>
+        <h4>Sem limite nenhum <span class="pro">PRO</span></h4>
+        <p>Receitas, insumos e categorias à vontade. O plano gratuito para em 3, 15 e 2.</p>
       </div>
       <div class="card">
-        <h4>Pay once, yours forever <span class="pro">PRO</span></h4>
-        <p>No monthly fee, no renewal, no surprise charge on your card.</p>
+        <h4>Paga uma vez, é seu para sempre <span class="pro">PRO</span></h4>
+        <p>Sem mensalidade, sem renovação, sem cobrança surpresa no cartão.</p>
       </div>
       <div class="card">
-        <h4>Works without internet</h4>
-        <p>Your sheets stay on your phone. Nothing is sent anywhere.</p>
+        <h4>Funciona sem internet</h4>
+        <p>Suas fichas ficam no seu celular. Nada é enviado para lugar nenhum.</p>
       </div>
     </div>
 
-    <h3 class="section">Your data stays with you</h3>
+    <h3 class="section">Seus dados ficam com você</h3>
     <div class="summary">
-      <p><strong>Preço Certo collects no personal data.</strong></p>
-      <p style="margin-top:8px">No account, no login, no server. Your recipes and prices are stored only on your phone and the app works without internet.</p>
+      <p><strong>O Preço Certo não coleta dados pessoais.</strong></p>
+      <p style="margin-top:8px">Sem conta, sem login, sem servidor. Suas receitas e preços ficam só no seu celular, e o app funciona sem internet.</p>
     </div>
   </article>
 
   <footer>
     <p>
       FLR Sistemas<br>
-      Contact: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a>
+      Contato: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a>
     </p>
   </footer>
 

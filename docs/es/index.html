@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Preço Certo — FLR Sistemas</title>
+<meta name="description" content="Preço Certo calcula el costo real y el precio de venta de cada receta de repostería, y genera presupuesto y ficha de cocina en PDF.">
+<link rel="canonical" href="https://flrsistemas.com.br/precocerto/es/">
+<link rel="alternate" hreflang="pt" href="https://flrsistemas.com.br/precocerto/">
+<link rel="alternate" hreflang="en" href="https://flrsistemas.com.br/precocerto/en/">
+<link rel="alternate" hreflang="es" href="https://flrsistemas.com.br/precocerto/es/">
+<link rel="alternate" hreflang="x-default" href="https://flrsistemas.com.br/precocerto/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FLR Sistemas">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Preço Certo — FLR Sistemas">
+<meta property="og:description" content="Preço Certo calcula el costo real y el precio de venta de cada receta de repostería, y genera presupuesto y ficha de cocina en PDF.">
+<meta property="og:url" content="https://flrsistemas.com.br/precocerto/es/">
+<style>
+  /* Tema escuro único: não há versão clara de propósito. Mesma paleta escura
+     da política de privacidade, para as duas páginas parecerem do mesmo lugar. */
+  :root {
+    color-scheme: dark;
+    --bg: #241C1A;
+    --surface: #2E2422;
+    --text: #F2E9E5;
+    --muted: #BFAEA7;
+    --border: #453634;
+    --accent: #7FB79B;
+    --accent-bg: #2A3833;
+    --brand: #B85463;
+    --brand-text: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 16px 72px;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  header.site { padding: 24px 0 0; }
+  .back { color: var(--muted); font-size: .95rem; text-decoration: none; }
+  .back:hover, .back:focus-visible { color: var(--text); text-decoration: underline; }
+
+  /* ===== Bloco do app =====
+     Esta é a página do Preço Certo; o portfólio com todos os apps mora na
+     página principal da FLR Sistemas (flrsistemas.github.io). A paleta creme,
+     rosa e marrom é a identidade do app e fica só aqui. */
+  article.app {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .app h2 { font-size: 1.6rem; line-height: 1.2; margin: 0 0 6px; }
+  .app .lead { font-size: 1.1rem; color: var(--muted); margin: 0 0 20px; }
+  .app h3.section { font-size: 1.05rem; margin: 30px 0 12px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .button {
+    display: inline-block;
+    background: var(--brand);
+    color: var(--brand-text);
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .button:hover, .button:focus-visible { filter: brightness(1.12); }
+  .link { color: var(--muted); font-size: .95rem; }
+  .note { color: var(--muted); font-size: .9rem; margin: 10px 0 0; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .card h4 { margin: 0 0 6px; font-size: 1.02rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .pro {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    vertical-align: middle;
+  }
+  /* Galeria: faixa que rola na horizontal e "encaixa" cada print. Cada imagem
+     leva width e height no HTML para a página não pular quando carregar. */
+  .shots {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 2px 14px;
+    margin: 0 -2px;
+  }
+  .shots figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
+  .shots img {
+    display: block;
+    width: 200px;
+    height: auto;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+  }
+  .shots figcaption { color: var(--muted); font-size: .85rem; margin-top: 8px; max-width: 200px; }
+  /* PDFs são folhas A4: mostram-se mais largas que os prints e, no orçamento,
+     só o topo, porque o resto da folha é branco. */
+  .shots.docs img { width: 260px; }
+  .shots.docs figcaption { max-width: 260px; }
+  .doc-quote .moldura img { border: 0; border-radius: 0; }
+  .doc-quote .moldura { width: 260px; aspect-ratio: 597 / 360; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); }
+  /* Passo a passo: lista numerada em cartoes, com o numero num circulo. */
+  ol.steps { list-style: none; counter-reset: passo; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ol.steps li {
+    counter-increment: passo;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px 16px 64px;
+  }
+  ol.steps li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: var(--brand-text);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+  }
+  ol.steps h4 { margin: 0 0 4px; font-size: 1.02rem; }
+  ol.steps p { margin: 0; color: var(--muted); font-size: .95rem; }
+  ol.steps p + p { margin-top: 6px; }
+  .tips { margin: 14px 0 0; padding-left: 20px; color: var(--muted); font-size: .95rem; }
+  .tips li { margin: 4px 0; }
+  .summary {
+    background: var(--accent-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+  }
+  .summary p { margin: 0; }
+  a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a.button { text-decoration: none; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .88rem;
+  }
+
+  /* Seletor de idioma: PT | EN | ES, discreto, no canto do topo. */
+  .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .langs { display: flex; gap: 4px; margin-left: auto; font-size: .85rem; }
+  .langs a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+  .langs a:hover, .langs a:focus-visible { color: var(--text); }
+  .langs a[aria-current="page"] { color: var(--text); border-color: var(--muted); font-weight: 600; }
+  nav.langs-solo { display: flex; justify-content: flex-end; padding-top: 24px; }
+
+</style>
+</head>
+<body>
+<main>
+
+  <header class="site topbar">
+    <a class="back" href="/es/">← FLR Sistemas</a>
+    <nav class="langs" aria-label="Language"><a href="/precocerto/" lang="pt" hreflang="pt" onclick="try{localStorage.setItem('lang','pt')}catch(e){}">PT</a><a href="/precocerto/en/" lang="en" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">EN</a><a href="/precocerto/es/" lang="es" hreflang="es" aria-current="page" onclick="try{localStorage.setItem('lang','es')}catch(e){}">ES</a></nav>
+  </header>
+
+  <article class="app" id="precocerto">
+    <h2>Preço Certo</h2>
+    <p class="lead">Conoce el costo real de cada receta y el precio que paga tu trabajo.</p>
+
+    <div class="actions">
+      <a class="button" href="https://play.google.com/store/apps/details?id=br.com.flrsistemas.precocerto.app">Descargar en Google Play</a>
+      <a class="link" href="#how">Cómo funciona</a>
+      <a class="link" href="../privacy.html">Política de privacidad (en inglés)</a>
+    </div>
+    <p class="note">App Android para quien trabaja en repostería.</p>
+
+    <h3 class="section">Qué hace</h3>
+    <p>
+      Anotas los ingredientes y el tiempo de cada receta. Preço Certo suma el costo de los ingredientes, del gas y la luz y de tu propio trabajo, y muestra cuánto cuesta de verdad cada unidad. Tú eliges el margen de ganancia que quieres y la app te da el precio de venta.
+    </p>
+
+    <div class="grid" style="margin-top:18px">
+      <div class="card">
+        <h4>Costo real por receta</h4>
+        <p>Ingredientes, costos indirectos y tu tiempo de trabajo, en un solo número por unidad.</p>
+      </div>
+      <div class="card">
+        <h4>Un solo precio de venta</h4>
+        <p>Elige el margen y recibe un único precio de venta, redondeado hacia arriba de 10 en 10 centavos. La ganancia mostrada se calcula sobre ese precio exacto.</p>
+      </div>
+      <div class="card">
+        <h4>Partes de la receta</h4>
+        <p>Separa los ingredientes en masa, relleno, condimento, decoración y empaque.</p>
+      </div>
+      <div class="card">
+        <h4>Archivo de copia de seguridad</h4>
+        <p>Guarda tus recetas en un archivo cifrado, compártelo y restáuralo en un teléfono nuevo.</p>
+      </div>
+    </div>
+
+    <h3 class="section" id="how">Cómo funciona</h3>
+    <ol class="steps">
+      <li>
+        <h4>Define cuánto vale tu hora</h4>
+        <p>Abre el menú y elige <strong>Mi Negocio</strong>. Completa el sueldo mensual deseado, las horas por día y los días por mes. La app muestra el valor de tu hora y el costo por minuto.</p>
+        <p>Ahí también defines los valores para las recetas nuevas (costos indirectos de gas, luz y desgaste, y el margen de ganancia). Toca <strong>Guardar ajustes</strong>. El nombre de tu repostería aparece en los presupuestos que envías.</p>
+      </li>
+      <li>
+        <h4>Registra tus insumos</h4>
+        <p>Abre <strong>Despensa</strong> y toca <strong>Nuevo insumo</strong>. Indica el nombre, el precio que pagaste por el paquete completo, la cantidad del paquete y la unidad. La app calcula sola el costo por gramo, mililitro o unidad.</p>
+        <p>Los empaques también cuentan: cajas y capacillos por unidad, cintas y películas por metro.</p>
+      </li>
+      <li>
+        <h4>Arma una receta</h4>
+        <p>Toca <strong>Nueva receta</strong>. Ponle un nombre, agrega los insumos de la despensa con la cantidad que usas y sepáralos en partes, como masa y relleno. Escribe la preparación, el tiempo activo y el rendimiento.</p>
+      </li>
+      <li>
+        <h4>Mira el precio</h4>
+        <p>Al final de la receta aparecen el costo total y el costo por unidad. Mueve el control del <strong>margen de ganancia deseado</strong> y la app muestra el precio de venta, redondeado hacia arriba de 10 en 10 centavos, con la ganancia por unidad. Si el redondeo sube el margen, un aviso te dice qué margen quedó. Toca <strong>Guardar receta</strong>.</p>
+      </li>
+      <li>
+        <h4>Envía un presupuesto o una ficha para la cocina <span class="pro">PRO</span></h4>
+        <p>Abre una receta y toca <strong>Crear presupuesto</strong>. Elige cobrar por <em>Unidad</em> o por <em>Receta entera</em>, indica la cantidad y para quién es, y toca <strong>Crear PDF</strong>. El presupuesto muestra el precio y nunca tus costos ni tu margen.</p>
+        <p><strong>Ficha para la cocina</strong> genera un PDF con todos los ingredientes por parte y la preparación, sin precios.</p>
+      </li>
+      <li>
+        <h4>Haz una copia de seguridad de tus recetas</h4>
+        <p>En <strong>Mi Negocio</strong>, la tarjeta de copia de seguridad (<strong>Hacer copia</strong>) guarda todo en un archivo cifrado que puedes compartir. Restáuralo desde la misma tarjeta (<strong>Restaurar copia</strong>) cuando cambies de teléfono.</p>
+      </li>
+    </ol>
+    <ul class="tips">
+      <li>Registra primero tus insumos y luego arma la receta: la receta los necesita para calcular el costo.</li>
+      <li>Actualiza el precio de un insumo cuando lo compres de nuevo, y las recetas que lo usan se actualizan solas.</li>
+      <li>La app usa el idioma y la región de tu teléfono, así que el dinero y los números se ven como ya los conoces.</li>
+    </ul>
+
+    <h3 class="section">Pantallas</h3>
+    <div class="shots">
+      <figure>
+        <img src="../img/home.webp" width="944" height="2000" loading="lazy"
+             alt="Pantalla de inicio con el número de recetas e ingredientes, el valor de tu hora y una guía de tres pasos.">
+        <figcaption>Inicio</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/pantry.webp" width="944" height="2000" loading="lazy"
+             alt="Lista de la despensa con el precio del paquete y el costo por gramo o por unidad de cada ingrediente.">
+        <figcaption>Tu despensa</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/recipes.png" width="383" height="812" loading="lazy"
+             alt="Lista de recetas con el precio, el costo por unidad y la ganancia por unidad de cada una.">
+        <figcaption>Tus recetas</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/recipe-price.png" width="378" height="816" loading="lazy"
+             alt="Pantalla de la receta con el resumen del lote, el costo total, el control del margen de ganancia y el precio de venta con la ganancia por unidad, sobre los botones de guardar, crear presupuesto y ficha para la cocina.">
+        <figcaption>Costo, precio y ganancia</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/my-business.webp" width="944" height="2000" loading="lazy"
+             alt="Pantalla Mi Negocio, donde indicas el sueldo que quieres, tus horas y los valores de costos indirectos y margen de ganancia.">
+        <figcaption>Cuánto vale tu hora</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/quote-screen.png" width="380" height="810" loading="lazy"
+             alt="Pantalla del presupuesto con para quién es, cantidad, precio unitario y total.">
+        <figcaption>Crear un presupuesto</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/pro.webp" width="944" height="2000" loading="lazy"
+             alt="Pantalla de Preço Certo Pro con lo que recibes: sin límites, presupuesto y ficha de cocina en PDF, pago único y funcionamiento sin internet.">
+        <figcaption>Qué recibes con Pro</figcaption>
+      </figure>
+    </div>
+    <p class="note">Las capturas de pantalla de la app están en inglés.</p>
+
+    <h3 class="section">Los dos PDF</h3>
+    <div class="shots docs">
+      <figure class="doc doc-quote">
+        <div class="moldura">
+          <img src="../img/quote-pdf.png" width="597" height="844" loading="lazy"
+               alt="Un presupuesto en PDF con el artículo, la cantidad, el precio unitario y el total. No muestra costos ni margen.">
+        </div>
+        <figcaption>Presupuesto para quien compra</figcaption>
+      </figure>
+      <figure class="doc">
+        <img src="../img/prep-sheet.png" width="595" height="845" loading="lazy"
+             alt="Una ficha para la cocina en PDF con los ingredientes agrupados por parte de la receta y la preparación. No muestra precios.">
+        <figcaption>Ficha para la cocina</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="section">Funciones Pro</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Presupuesto en PDF <span class="pro">PRO</span></h4>
+        <p>Convierte una receta en un presupuesto para quien va a comprar. Muestra el precio y nunca tus costos ni tu margen.</p>
+      </div>
+      <div class="card">
+        <h4>Ficha para la cocina en PDF <span class="pro">PRO</span></h4>
+        <p>Todos los ingredientes y la preparación en una hoja para la cocina, sin precios.</p>
+      </div>
+      <div class="card">
+        <h4>Sin ningún límite <span class="pro">PRO</span></h4>
+        <p>Recetas, insumos y categorías a voluntad. El plan gratuito se detiene en 3, 15 y 2.</p>
+      </div>
+      <div class="card">
+        <h4>Pagas una vez, es tuyo para siempre <span class="pro">PRO</span></h4>
+        <p>Sin mensualidad, sin renovación, sin cobros sorpresa en la tarjeta.</p>
+      </div>
+      <div class="card">
+        <h4>Funciona sin internet</h4>
+        <p>Tus fichas quedan en tu teléfono. Nada se envía a ningún lado.</p>
+      </div>
+    </div>
+
+    <h3 class="section">Tus datos se quedan contigo</h3>
+    <div class="summary">
+      <p><strong>Preço Certo no recopila datos personales.</strong></p>
+      <p style="margin-top:8px">Sin cuenta, sin inicio de sesión, sin servidor. Tus recetas y precios se guardan solo en tu teléfono y la app funciona sin internet.</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>
+      FLR Sistemas<br>
+      Contacto: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a>
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>
