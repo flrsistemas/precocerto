@@ -106,6 +106,35 @@
   .shots.docs figcaption { max-width: 260px; }
   .doc-quote .moldura img { border: 0; border-radius: 0; }
   .doc-quote .moldura { width: 260px; aspect-ratio: 597 / 360; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); }
+  /* Passo a passo: lista numerada em cartoes, com o numero num circulo. */
+  ol.steps { list-style: none; counter-reset: passo; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ol.steps li {
+    counter-increment: passo;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px 16px 64px;
+  }
+  ol.steps li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: var(--brand-text);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+  }
+  ol.steps h4 { margin: 0 0 4px; font-size: 1.02rem; }
+  ol.steps p { margin: 0; color: var(--muted); font-size: .95rem; }
+  ol.steps p + p { margin-top: 6px; }
+  .tips { margin: 14px 0 0; padding-left: 20px; color: var(--muted); font-size: .95rem; }
+  .tips li { margin: 4px 0; }
   .summary {
     background: var(--accent-bg);
     border-left: 4px solid var(--accent);
@@ -142,6 +171,7 @@
 
     <div class="actions">
       <a class="button" href="https://play.google.com/store/apps/details?id=br.com.flrsistemas.precocerto.app">Get it on Google Play</a>
+      <a class="link" href="#how">How it works</a>
       <a class="link" href="privacy.html">Privacy policy</a>
     </div>
     <p class="note">Android app for bakers and confectioners.</p>
@@ -172,6 +202,42 @@
         <p>Save your recipes in an encrypted file, share it, and restore it on a new phone.</p>
       </div>
     </div>
+
+    <h3 class="section" id="how">How it works</h3>
+    <ol class="steps">
+      <li>
+        <h4>Set what your hour is worth</h4>
+        <p>Open the menu and choose <strong>My Business</strong>. Fill in the income you want each month, your hours per day and your days per month. The app shows your hourly rate and cost per minute.</p>
+        <p>Here you also set the defaults for new recipes (overheads for gas, electricity and wear, and your profit margin). Tap <strong>Save settings</strong>. Your business name goes on the quotes you send.</p>
+      </li>
+      <li>
+        <h4>Add your pantry items</h4>
+        <p>Go to <strong>Pantry</strong> and tap <strong>New item</strong>. Enter the name, the price you paid for the whole package, and the package amount and unit. The app works out the cost per gram, millilitre or unit on its own.</p>
+        <p>Packaging counts too: boxes and liners by the piece, ribbon and film by the metre.</p>
+      </li>
+      <li>
+        <h4>Build a recipe</h4>
+        <p>Tap <strong>New recipe</strong>. Give it a name, add the pantry items with the amount you use, and sort them into parts such as dough and filling. Write the method, the hands-on time, and how much the recipe yields.</p>
+      </li>
+      <li>
+        <h4>Read the price</h4>
+        <p>At the bottom of the recipe you see the total cost and the cost per unit. Move the <strong>profit margin</strong> slider and the app gives you the selling price, rounded up to the next 10 cents, with the profit per unit. If rounding raises the margin, a note tells you the margin it ended up with. Tap <strong>Save recipe</strong>.</p>
+      </li>
+      <li>
+        <h4>Send a quote or a kitchen sheet <span class="pro">PRO</span></h4>
+        <p>Open a recipe and tap <strong>Create a quote</strong>. Choose to charge by <em>Unit</em> or by <em>Whole recipe</em>, set the quantity and who it is for, and tap <strong>Create PDF</strong>. The quote shows the price and never your costs or your margin.</p>
+        <p><strong>Kitchen sheet</strong> makes a PDF with every ingredient by part and the method, with no prices.</p>
+      </li>
+      <li>
+        <h4>Back up your recipes</h4>
+        <p>In <strong>My Business</strong>, the backup card saves everything in one encrypted file that you can share. Restore it from the same card when you change phones.</p>
+      </li>
+    </ol>
+    <ul class="tips">
+      <li>Add your pantry items first, then build the recipe: the recipe needs them to work out the cost.</li>
+      <li>Update an item's price when you buy it again, and the recipes that use it update on their own.</li>
+      <li>The app uses your phone's language and region, so money and numbers look the way you are used to.</li>
+    </ul>
 
     <h3 class="section">Screenshots</h3>
     <div class="shots">
