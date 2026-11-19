@@ -183,7 +183,8 @@
 <link rel="apple-touch-icon" href="/precocerto/apple-touch-icon.png">
 <meta name="theme-color" content="#B85463">
 <style id="wide">
-  /* Paginas de vitrine usam mais largura em telas grandes; textos longos continuam estreitos */
+  /* Todas as abas usam a mesma largura em telas grandes (sem "pulo" ao trocar de aba) */
+  html { scrollbar-gutter: stable; }
   @media (min-width: 1000px) {
     main.wide { max-width: 1100px; }
     main.wide .apps { gap: 24px; }
@@ -197,6 +198,13 @@
     main.wide .shots figcaption { max-width: 220px; }
     main.wide .shots.docs img { width: 300px; }
     main.wide .shots.docs figcaption { max-width: 300px; }
+    /* abas de texto (Novidades, Ajuda, Contato, Privacidade): mesma largura, conteudo em colunas */
+    main.wide .boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin: 0 0 22px; }
+    main.wide .boxes .box { margin: 0; }
+    main.wide .news-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+    main.wide .news-list .news-item { margin: 0; }
+    main.wide .faq-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; align-items: start; }
+    main.wide .faq-cols section.faq-group:first-child, main.wide .faq-cols section.faq-group:nth-child(2) { margin-top: 30px; }
   }
 </style>
 </head>
