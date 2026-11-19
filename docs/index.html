@@ -192,9 +192,26 @@
 <link rel="icon" href="/precocerto/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/precocerto/apple-touch-icon.png">
 <meta name="theme-color" content="#B85463">
+<style id="wide">
+  /* Paginas de vitrine usam mais largura em telas grandes; textos longos continuam estreitos */
+  @media (min-width: 1000px) {
+    main.wide { max-width: 1100px; }
+    main.wide .apps { gap: 24px; }
+    main.wide article.app { padding: 26px 28px; }
+    main.wide .thumb { height: 260px; }
+    main.wide article.app > p, main.wide article.app > .summary { max-width: 72ch; }
+    main.wide .grid { grid-template-columns: repeat(3, 1fr); }
+    main.wide ol.steps { grid-template-columns: 1fr 1fr; }
+    main.wide .shots { flex-wrap: wrap; overflow: visible; scroll-snap-type: none; gap: 20px; }
+    main.wide .shots img { width: 220px; }
+    main.wide .shots figcaption { max-width: 220px; }
+    main.wide .shots.docs img { width: 300px; }
+    main.wide .shots.docs figcaption { max-width: 300px; }
+  }
+</style>
 </head>
 <body>
-<main>
+<main class="wide">
 
   <header class="site topbar">
     <a class="back" href="/">← FLR Sistemas</a>
