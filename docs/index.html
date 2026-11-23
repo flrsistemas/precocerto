@@ -177,6 +177,19 @@
   .langs a[aria-current="page"] { color: var(--text); border-color: var(--muted); font-weight: 600; }
   nav.langs-solo { display: flex; justify-content: flex-end; padding-top: 24px; }
 
+
+
+  footer .quick { display: inline-block; margin-top: 4px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px;
+    color: var(--text); text-decoration: none; font-size: .9rem; }
+  footer .quick:hover, footer .quick:focus-visible { border-color: var(--muted); }
+/*quick*/
+  main.wide ol.steps.three { grid-template-columns: repeat(3, 1fr); }
+  .shots.docs.mini { align-items: flex-start; }
+  .shots.docs.mini img { width: 150px; }
+  .shots.docs.mini figcaption { max-width: 150px; }
+  main.wide .shots.docs.mini img { width: 170px; }
+  main.wide .shots.docs.mini figcaption { max-width: 170px; }
+/*quick-end*/
 </style>
 <script>
   /* Escolha automatica de idioma, so na primeira visita e so na pagina padrao (pt). */
@@ -236,6 +249,29 @@
       <a class="link" href="/precocerto/privacy.html">Política de privacidade</a>
     </div>
     <p class="note">App Android para quem trabalha com confeitaria.</p>
+
+<!-- quick:start -->
+    <h3 class="section" id="quick">Em 3 passos</h3>
+    <ol class="steps three">
+      <li>
+        <h4>Cadastre seus insumos e custos</h4>
+        <p>Informe o preço da embalagem e a quantidade. O app calcula sozinho o custo por grama, mililitro ou unidade.</p>
+      </li>
+      <li>
+        <h4>Monte a receita e defina a margem</h4>
+        <p>Adicione os insumos, o modo de preparo e o rendimento. O app mostra o custo real e o preço que paga o seu trabalho.</p>
+      </li>
+      <li>
+        <h4>Gere o orçamento e a ficha em PDF</h4>
+        <p>Um PDF para quem compra e outro para a cozinha, prontos para enviar ou imprimir.</p>
+      </li>
+    </ol>
+    <p class="note" style="margin-top:18px">Exemplo do resultado &middot; <a href="#pdfs">Ver os dois PDFs em detalhe</a></p>
+    <div class="shots docs mini">
+      <figure class="doc doc-quote"><img src="/precocerto/img/quote-pdf.png" width="597" height="844" loading="lazy" alt="Um orçamento em PDF com item, quantidade, preço unitário e total. Não mostra custos nem margem."><figcaption>Orçamento em PDF</figcaption></figure>
+      <figure class="doc"><img src="/precocerto/img/prep-sheet.png" width="595" height="845" loading="lazy" alt="Uma ficha para a cozinha em PDF com os ingredientes agrupados por parte da receita e o modo de preparo. Não mostra preços."><figcaption>Ficha para a cozinha</figcaption></figure>
+    </div>
+    <!-- quick:end -->
 
     <h3 class="section">O que ele faz</h3>
     <p>
@@ -337,7 +373,7 @@
     </div>
     <p class="note">As capturas de tela do app estão em inglês.</p>
 
-    <h3 class="section">Os dois PDFs</h3>
+    <h3 class="section" id="pdfs">Os dois PDFs</h3>
     <div class="shots docs">
       <figure class="doc doc-quote">
         <div class="moldura">
@@ -387,8 +423,10 @@
   <footer>
     <p>
       FLR Sistemas<br>
-      Contato: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a>
+      Contato: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a><br>
+      <a href="/precocerto/privacy.html">Privacidade</a> &middot; <a href="/termos/">Termos de Uso</a>
     </p>
+    <p><a class="quick" href="mailto:contato@flrsistemas.com.br?subject=Preço%20Certo">&#9993; Enviar mensagem</a></p>
   </footer>
 
 </main>

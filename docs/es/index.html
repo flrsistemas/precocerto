@@ -177,6 +177,19 @@
   .langs a[aria-current="page"] { color: var(--text); border-color: var(--muted); font-weight: 600; }
   nav.langs-solo { display: flex; justify-content: flex-end; padding-top: 24px; }
 
+
+
+  footer .quick { display: inline-block; margin-top: 4px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px;
+    color: var(--text); text-decoration: none; font-size: .9rem; }
+  footer .quick:hover, footer .quick:focus-visible { border-color: var(--muted); }
+/*quick*/
+  main.wide ol.steps.three { grid-template-columns: repeat(3, 1fr); }
+  .shots.docs.mini { align-items: flex-start; }
+  .shots.docs.mini img { width: 150px; }
+  .shots.docs.mini figcaption { max-width: 150px; }
+  main.wide .shots.docs.mini img { width: 170px; }
+  main.wide .shots.docs.mini figcaption { max-width: 170px; }
+/*quick-end*/
 </style>
 <link rel="icon" href="/precocerto/icon.svg" type="image/svg+xml">
 <link rel="icon" href="/precocerto/favicon-32.png" sizes="32x32" type="image/png">
@@ -226,6 +239,29 @@
       <a class="link" href="/precocerto/privacy-es.html">Política de privacidad</a>
     </div>
     <p class="note">App Android para quien trabaja en repostería.</p>
+
+<!-- quick:start -->
+    <h3 class="section" id="quick">En 3 pasos</h3>
+    <ol class="steps three">
+      <li>
+        <h4>Registra tus insumos y costos</h4>
+        <p>Ingresa el precio del envase y su cantidad. La app calcula sola el costo por gramo, mililitro o unidad.</p>
+      </li>
+      <li>
+        <h4>Arma la receta y define tu margen</h4>
+        <p>Agrega los insumos, el modo de preparación y el rendimiento. La app muestra el costo real y el precio que paga tu trabajo.</p>
+      </li>
+      <li>
+        <h4>Genera el presupuesto y la ficha en PDF</h4>
+        <p>Un PDF para quien compra y otro para la cocina, listos para enviar o imprimir.</p>
+      </li>
+    </ol>
+    <p class="note" style="margin-top:18px">Ejemplo del resultado &middot; <a href="#pdfs">Ver los dos PDF en detalle</a></p>
+    <div class="shots docs mini">
+      <figure class="doc doc-quote"><img src="/precocerto/img/quote-pdf.png" width="597" height="844" loading="lazy" alt="Un presupuesto en PDF con artículo, cantidad, precio unitario y total. No muestra costos ni margen."><figcaption>Presupuesto en PDF</figcaption></figure>
+      <figure class="doc"><img src="/precocerto/img/prep-sheet.png" width="595" height="845" loading="lazy" alt="Una ficha de cocina en PDF con los ingredientes agrupados por parte de la receta y el modo de preparación. No muestra precios."><figcaption>Ficha de cocina</figcaption></figure>
+    </div>
+    <!-- quick:end -->
 
     <h3 class="section">Qué hace</h3>
     <p>
@@ -327,7 +363,7 @@
     </div>
     <p class="note">Las capturas de pantalla de la app están en inglés.</p>
 
-    <h3 class="section">Los dos PDF</h3>
+    <h3 class="section" id="pdfs">Los dos PDF</h3>
     <div class="shots docs">
       <figure class="doc doc-quote">
         <div class="moldura">
@@ -377,8 +413,10 @@
   <footer>
     <p>
       FLR Sistemas<br>
-      Contacto: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a>
+      Contacto: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a><br>
+      <a href="/precocerto/privacy-es.html">Privacidad</a> &middot; <a href="/es/terminos/">Términos de Uso</a>
     </p>
+    <p><a class="quick" href="mailto:contato@flrsistemas.com.br?subject=Pre%C3%A7o%20Certo">&#9993; Enviar mensaje</a></p>
   </footer>
 
 </main>

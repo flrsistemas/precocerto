@@ -177,6 +177,19 @@
   .langs a[aria-current="page"] { color: var(--text); border-color: var(--muted); font-weight: 600; }
   nav.langs-solo { display: flex; justify-content: flex-end; padding-top: 24px; }
 
+
+
+  footer .quick { display: inline-block; margin-top: 4px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px;
+    color: var(--text); text-decoration: none; font-size: .9rem; }
+  footer .quick:hover, footer .quick:focus-visible { border-color: var(--muted); }
+/*quick*/
+  main.wide ol.steps.three { grid-template-columns: repeat(3, 1fr); }
+  .shots.docs.mini { align-items: flex-start; }
+  .shots.docs.mini img { width: 150px; }
+  .shots.docs.mini figcaption { max-width: 150px; }
+  main.wide .shots.docs.mini img { width: 170px; }
+  main.wide .shots.docs.mini figcaption { max-width: 170px; }
+/*quick-end*/
 </style>
 <link rel="icon" href="/precocerto/icon.svg" type="image/svg+xml">
 <link rel="icon" href="/precocerto/favicon-32.png" sizes="32x32" type="image/png">
@@ -226,6 +239,29 @@
       <a class="link" href="/precocerto/privacy-en.html">Privacy policy</a>
     </div>
     <p class="note">Android app for bakers and confectioners.</p>
+
+<!-- quick:start -->
+    <h3 class="section" id="quick">In 3 steps</h3>
+    <ol class="steps three">
+      <li>
+        <h4>Add your ingredients and costs</h4>
+        <p>Enter the package price and size. The app works out the cost per gram, milliliter or unit by itself.</p>
+      </li>
+      <li>
+        <h4>Build the recipe and set your margin</h4>
+        <p>Add the ingredients, the method and the yield. The app shows the real cost and the price that pays you for your work.</p>
+      </li>
+      <li>
+        <h4>Create the quote and kitchen sheet as PDF</h4>
+        <p>One PDF for the customer and another for the kitchen, ready to send or print.</p>
+      </li>
+    </ol>
+    <p class="note" style="margin-top:18px">Example of the result &middot; <a href="#pdfs">See both PDFs in detail</a></p>
+    <div class="shots docs mini">
+      <figure class="doc doc-quote"><img src="/precocerto/img/quote-pdf.png" width="597" height="844" loading="lazy" alt="A quote as PDF with item, quantity, unit price and total. It does not show costs or margin."><figcaption>Quote as PDF</figcaption></figure>
+      <figure class="doc"><img src="/precocerto/img/prep-sheet.png" width="595" height="845" loading="lazy" alt="A kitchen sheet as PDF with the ingredients grouped by recipe part and the method. It does not show prices."><figcaption>Kitchen sheet</figcaption></figure>
+    </div>
+    <!-- quick:end -->
 
     <h3 class="section">What it does</h3>
     <p>
@@ -326,7 +362,7 @@
       </figure>
     </div>
 
-    <h3 class="section">The two PDFs</h3>
+    <h3 class="section" id="pdfs">The two PDFs</h3>
     <div class="shots docs">
       <figure class="doc doc-quote">
         <div class="moldura">
@@ -376,8 +412,10 @@
   <footer>
     <p>
       FLR Sistemas<br>
-      Contact: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a>
+      Contact: <a href="mailto:contato@flrsistemas.com.br">contato@flrsistemas.com.br</a><br>
+      <a href="/precocerto/privacy-en.html">Privacy</a> &middot; <a href="/en/terms/">Terms of Use</a>
     </p>
+    <p><a class="quick" href="mailto:contato@flrsistemas.com.br?subject=Pre%C3%A7o%20Certo">&#9993; Send a message</a></p>
   </footer>
 
 </main>
